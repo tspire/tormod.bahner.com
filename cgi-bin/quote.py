@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # coding: utf-8
+# pylint: disable=invalid-name
 """Simple CGI Script to retrieve and store email messages"""
 
+import os
 import datetime
 
 import cgi
@@ -11,7 +13,8 @@ cgitb.enable()
 
 # Set the current time
 NOW = str(datetime.datetime.now())
-OUTPUT='../quotes/quote.txt'
+OUTPUT = '../quotes/quote.txt'
+REDIR = os.getenv('HTTP_REFERER', 'https://tormod.bahner.com/')
 
 # Fetch the data from the form sent here
 form = cgi.FieldStorage()
@@ -36,10 +39,19 @@ txt += '\n'
 # Write to file, using "a" to only append, and
 # *NOT* overwrite anything.
 with open(OUTPUT, "a") as quote:
-	quote.write(txt)
+    quote.write(txt)
 
 # Sign off and say thank you.
-print('Content-Type: text/html;charset=utf-8')
-print()
-
-print('Your feedback has been received, %s! Thank you.' % name)
+print("""Content-Type: text/html;charset=utf-8
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- HTML meta refresh URL redirection -->
+   <meta http-equiv="refresh"
+   content="3; url=%s">
+</head>
+<body>
+   Takk for dine input, %s
+</body>
+</html>
+""" % (REDIR, name))
