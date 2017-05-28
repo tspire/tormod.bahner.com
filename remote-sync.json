@@ -1,0 +1,14 @@
+{
+ "transport": "scp",
+ "hostname": "odyssevs",
+ "username": "tormod",
+ "target": "htdocs",
+ "uploadOnSave": true,
+ "saveOnUpoad": true,
+ "useAgent": true,
+ "useAtomicWrites": true,
+ "ignore": [
+  ".remote-sync.json",
+  ".git/**"
+ ]
+}
