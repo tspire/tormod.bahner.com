@@ -52,7 +52,7 @@ print("""Content-Type: text/html;charset=utf-8
    content="3; url=%s">
 </head>
 <body>
-   Takk for dine input, %s
+   Takk for din input, %s
 </body>
 </html>
 """ % (REDIR, name))
