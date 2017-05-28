@@ -42,16 +42,7 @@ with open(OUTPUT, "a") as quote:
     quote.write(txt)
 
 # Sign off and say thank you.
-print("""Content-Type: text/html;charset=utf-8
-<!DOCTYPE html>
-<html>
-<head>
-   <!-- HTML meta refresh URL redirection -->
-   <meta http-equiv="refresh"
-   content="3; url=%s">
-</head>
-<body>
-   Takk for dine input, %s
-</body>
-</html>
-""" % (REDIR, name))
+print("""HTTP/1.1 303 See other
+
+Location: %s
+""" % REDIR)
