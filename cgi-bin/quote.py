@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-"""Simple CGI Script to retrieve and store email messages
-
-Furthermore script sends an email, if email is valid.
-"""
+"""Simple CGI Script to retrieve and store email messages"""
 
 import datetime
 
